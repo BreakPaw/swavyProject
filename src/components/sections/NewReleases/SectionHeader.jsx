@@ -1,0 +1,34 @@
+import leftArrow from "../../../assets/images/btn-left.svg"
+import rightArrow from "../../../assets/images/btn-right.svg"
+
+const SectionHeader = () => {
+  return (
+    <div className="flex items-center justify-between mb-6">
+      
+      {/* LEFT */}
+      <div>
+        <h2 className="font-['Liberation_Serif'] text-[30px] leading-[36px] font-normal text-[#1A1C1C]">
+          New Releases
+        </h2>
+
+        <p className="font-['Manrope'] text-[12px] font-normal tracking-[1.2px] text-[#71717A]">
+          Fresh experimental sounds this week
+        </p>
+      </div>
+
+      {/* RIGHT */}
+      <div className="flex gap-2">
+        <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-gray-100 transition">
+          <img src={leftArrow} alt="left arrow" />
+        </button>
+
+        <button className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-gray-100 transition">
+          <img src={rightArrow} alt="right arrow" />
+        </button>
+      </div>
+
+    </div>
+  );
+};
+
+export default SectionHeader;

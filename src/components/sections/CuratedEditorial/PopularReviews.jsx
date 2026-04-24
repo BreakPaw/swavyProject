@@ -10,7 +10,9 @@ const PopularReviews = () => {
   ];
 
   return (
-    <div className="w-full lg:w-[350px] xl:w-[400px]">
+    <div className="w-full
+  lg:max-w-[350px]
+  xl:max-w-[400px]">
       <h2 className="text-2xl font-[Liberation_Serif] text-gray-900 mb-6">Popular Reviews</h2>
       
       <div className="flex flex-col gap-6 mb-8">
@@ -26,7 +28,7 @@ const PopularReviews = () => {
         ))}
       </div>
 
-      <button className="font-[Manrope] w-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold tracking-widest uppercase py-4 rounded-md transition">
+      <button className="font-[Manrope] w-full bg-gray-100 hover:bg-gray-200 text-gray-700 text-xs font-bold tracking-widest uppercase py-3 md:py-4 rounded-md transition">
         View All Reviews
       </button>
     </div>

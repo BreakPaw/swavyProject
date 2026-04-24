@@ -3,7 +3,7 @@ import rightArrow from "../../../assets/images/btn-right.svg"
 
 const SectionHeader = () => {
   return (
-    <div className="flex items-center justify-between mb-6">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
       
       {/* LEFT */}
       <div>

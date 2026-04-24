@@ -1,9 +1,9 @@
 const CuratedCard = ({ images }) => {
   return (
-    <div className="space-y-4 cursor-pointer group">
+    <div className="space-y-3 md:space-y-4 cursor-pointer group">
       
       {/* IMAGE STACK */}
-      <div className="relative w-40 h-40">
+      <div className="relative w-full aspect-square max-w-[200px]">
         {images[2] && (
           <img
             src={images[2].images[0]?.url}
@@ -31,15 +31,15 @@ const CuratedCard = ({ images }) => {
 
       {/* TEXT */}
       <div>
-        <p className="mt-7 text-xs text-green-600 tracking-widest">
+        <p className="text-xs text-green-600 tracking-widest">
           VOLUME 01
         </p>
 
-        <h3 className="text-xl mt-2 font-['Newsreader'] text-gray-900">
+        <h3 className="text-base md:text-lg lg:text-xl font-['Newsreader'] mt-2 text-gray-900">
           Nocturnal Textures
         </h3>
 
-        <p className="font-['Manrope'] text-sm text-[#3D4A3D]">
+        <p className="font-['Manrope'] text-xs md:text-sm text-[#3D4A3D]">
           By Elena Voss • 42 Albums
         </p>
       </div>

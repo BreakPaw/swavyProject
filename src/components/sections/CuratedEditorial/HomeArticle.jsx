@@ -8,14 +8,21 @@ const HomeArticle = () => {
       <h2 className="text-2xl font-[Liberation_Serif] text-gray-900 mb-6">Curated Editorial</h2>
       
       {/* Kartu Utama (Besar) */}
-      <div className="relative w-full h-[360px] rounded-2xl overflow-hidden group cursor-pointer mb-6 shadow-md">
+      <div className="relative w-full
+  h-[220px] sm:h-[280px] md:h-[360px]
+  rounded-2xl overflow-hidden
+  group cursor-pointer mb-6 shadow-md">
         <div className="absolute inset-0 bg-gray-900 flex items-center justify-center">
           <img className="w-full h-full object-cover" src={album} alt="" />
         </div>
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 p-8 w-full md:w-4/5">
+        <div className="absolute bottom-0 left-0
+  p-4 md:p-8
+  w-full md:w-4/5">
           <p className="text-[#1DB954] text-xs font-bold tracking-widest uppercase mb-2">Deep Dive</p>
-          <h3 className="text-3xl font-serif text-white leading-tight mb-3">
+          <h3 className="text-xl sm:text-2xl md:text-3xl
+  font-serif text-white
+  leading-tight mb-3">
             The Analog Renaissance: Why Vinyl Still Matters in 2024
           </h3>
           <p className="text-gray-300 text-sm leading-relaxed">

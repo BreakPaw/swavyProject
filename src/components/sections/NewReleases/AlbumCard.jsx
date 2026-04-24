@@ -3,8 +3,8 @@ import React from 'react';
 // Menerima data dinamis melalui props
 const AlbumCard = ({ image, title, artist }) => {
   return (
-    <div className="min-w-[160px] cursor-pointer group">
-      <div className="rounded-lg mb-2 w-full h-[160px] overflow-hidden">
+    <div className="min-w-[140px] md:min-w-[180px] cursor-pointer group">
+      <div className="rounded-lg mb-2 w-full h-[140px] md:h-[180px] overflow-hidden">
         <img
           src={image}
           alt={title}

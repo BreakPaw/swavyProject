@@ -3,8 +3,8 @@ import CuratedCTA from "./CuratedCTA";
 const CuratedGrid = ({ releases, loading }) => {
     if (loading) {
       return (
-        <div className="text-center py-10 text-gray-500">
-          Loading...
+        <div className="py-10 text-center text-sm text-gray-400 animate-pulse">
+          Loading collections...
         </div>
       );
     }
@@ -16,7 +16,12 @@ const CuratedGrid = ({ releases, loading }) => {
     ];
   return (
     
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div className="grid
+  grid-cols-1
+  sm:grid-cols-2
+  md:grid-cols-3
+  lg:grid-cols-4
+  gap-6">
       
       {grouped.map((group, index) => (
         <CuratedCard key={index} images={group} />

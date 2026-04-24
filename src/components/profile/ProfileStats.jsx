@@ -9,7 +9,7 @@ const stats = [
 
 const ProfileStats = () => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
       {stats.map((item, i) => (
         <ProfileStatCard key={i} {...item} />
       ))}

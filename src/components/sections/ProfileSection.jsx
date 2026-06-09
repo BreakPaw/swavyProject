@@ -230,6 +230,18 @@ const ProfileSection = ({ username }) => {
     }
   };
 
+  const handleReviewDeleted = (reviewId) => {
+    setTopPicks((prev) => prev.filter((review) => review.id !== reviewId));
+    setStats((prev) => {
+      if (!prev) return prev;
+
+      return {
+        ...prev,
+        reviewsCount: Math.max((prev.reviewsCount || 0) - 1, 0),
+      };
+    });
+  };
+
   if (isLoading) {
     return <ProfileSkeleton />;
   }
@@ -273,6 +285,7 @@ const ProfileSection = ({ username }) => {
           reviews={topPicks}
           isOwnProfile={isOwnProfile}
           onBack={() => setActiveView("overview")}
+          onReviewDeleted={handleReviewDeleted}
         />
       ) : null}
 

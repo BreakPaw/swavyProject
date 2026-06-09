@@ -74,6 +74,15 @@ final class ReviewController
         } catch (\Throwable $e) { Response::json(['error' => $e->getMessage()], 500); }
     }
 
+    public static function deleteReview(Request $request): void
+    {
+        try {
+            $deleted = ReviewService::delete(Database::connection(), (string) $request->params['id'], (string) $request->user['id']);
+            if (!$deleted) { Response::json(['error' => 'Review not found'], 404); return; }
+            Response::json(['deleted' => true], 200);
+        } catch (\Throwable $e) { Response::json(['error' => $e->getMessage()], 500); }
+    }
+
     public static function getMyTrackReview(Request $request): void
     {
         try {

@@ -58,6 +58,15 @@ export const updateReview = async (reviewId, payload) => {
   return data?.review || null;
 };
 
+export const deleteReview = async (reviewId) => {
+  const data = await apiFetch(`/reviews/${reviewId}`, {
+    method: "DELETE",
+    headers: getAuthHeaders(),
+  });
+
+  return data?.deleted || false;
+};
+
 export const getMyTrackReview = async (trackId) => {
   const data = await apiFetch(`/reviews/track/${trackId}/me`, {
     headers: getAuthHeaders(),

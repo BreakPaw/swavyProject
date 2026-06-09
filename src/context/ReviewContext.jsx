@@ -9,6 +9,7 @@ import {
 } from "react";
 import {
   createReview as createReviewRequest,
+  deleteReview as deleteReviewRequest,
   updateReview as updateReviewRequest,
   getRecentReviews,
   toggleReviewLike as toggleReviewLikeRequest,
@@ -76,6 +77,14 @@ export const ReviewProvider = ({ children }) => {
       setReviews((prev) => prev.map((item) => (item.id === mapped.id ? mapped : item)));
     }
     return updated;
+  }, []);
+
+  const deleteReview = useCallback(async (reviewId) => {
+    const deleted = await deleteReviewRequest(reviewId);
+    if (deleted) {
+      setReviews((prev) => prev.filter((item) => item.id !== reviewId));
+    }
+    return deleted;
   }, []);
 
   const likeReview = useCallback((id) => {
@@ -190,12 +199,14 @@ export const ReviewProvider = ({ children }) => {
       refreshReviews,
       createReview,
       updateReview,
+      deleteReview,
       likeReview,
       toggleReviewLike,
       setPage,
     };
   }, [
     createReview,
+    deleteReview,
     updateReview,
     isLoading,
     likeReview,

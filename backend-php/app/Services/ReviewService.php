@@ -27,6 +27,33 @@ final class ReviewService
         return $row ?: null;
     }
 
+    public static function delete(PDO $pdo, string $id, string $userId): bool
+    {
+        $pdo->beginTransaction();
+
+        try {
+            $check = $pdo->prepare('SELECT id FROM reviews WHERE id=:id AND user_id=:uid LIMIT 1');
+            $check->execute(['id' => $id, 'uid' => $userId]);
+
+            if (!$check->fetch()) {
+                $pdo->rollBack();
+                return false;
+            }
+
+            $likes = $pdo->prepare('DELETE FROM review_likes WHERE review_id=:id');
+            $likes->execute(['id' => $id]);
+
+            $review = $pdo->prepare('DELETE FROM reviews WHERE id=:id AND user_id=:uid');
+            $review->execute(['id' => $id, 'uid' => $userId]);
+
+            $pdo->commit();
+            return $review->rowCount() > 0;
+        } catch (\Throwable $e) {
+            $pdo->rollBack();
+            throw $e;
+        }
+    }
+
     public static function getMyTrackReview(PDO $pdo, string $trackId, string $userId): ?array
     {
         $stmt = $pdo->prepare('SELECT ' . self::SELECT . ' FROM reviews WHERE track_id=:track AND user_id=:uid LIMIT 1');

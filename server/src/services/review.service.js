@@ -86,6 +86,35 @@ export const updateReview = async (
   return mapReviewRow(data);
 };
 
+export const deleteReview = async (supabaseClient, reviewId, userId) => {
+  const { data: review, error: reviewError } = await supabaseClient
+    .from("reviews")
+    .select("id")
+    .eq("id", reviewId)
+    .eq("user_id", userId)
+    .maybeSingle();
+
+  if (reviewError) throw reviewError;
+  if (!review) return false;
+
+  const { error: likesError } = await supabaseClient
+    .from("review_likes")
+    .delete()
+    .eq("review_id", reviewId);
+
+  if (likesError) throw likesError;
+
+  const { error: deleteError } = await supabaseClient
+    .from("reviews")
+    .delete()
+    .eq("id", reviewId)
+    .eq("user_id", userId);
+
+  if (deleteError) throw deleteError;
+
+  return true;
+};
+
 export const getMyTrackReview = async (supabaseClient, trackId, userId) => {
   const { data, error } = await supabaseClient
     .from("reviews")

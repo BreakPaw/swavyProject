@@ -1,4 +1,4 @@
-import { createUserClient, supabase } from "../config/supabase.js";
+import { createUserClient, supabase, supabaseAdmin } from "../config/supabase.js";
 import * as reviewService from "../services/review.service.js";
 
 const parsePositiveInt = (value, fallback) => {
@@ -103,6 +103,21 @@ export const updateReview = async (req, res) => {
 
     const review = await reviewService.updateReview(req.supabase, id, req.user.id, payload);
     return res.status(200).json({ review });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+export const deleteReview = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleted = await reviewService.deleteReview(supabaseAdmin, id, req.user.id);
+
+    if (!deleted) {
+      return res.status(404).json({ error: "Review not found" });
+    }
+
+    return res.status(200).json({ deleted: true });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }

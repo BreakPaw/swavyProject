@@ -40,6 +40,7 @@ $router->add('GET', '/api/reviews/track/:id/me', [ReviewController::class, 'getM
 $router->add('GET', '/api/reviews/track/:id', [ReviewController::class, 'getTrackReviews']);
 $router->add('POST', '/api/reviews', [ReviewController::class, 'createReview'], [[AuthMiddleware::class, 'handle']]);
 $router->add('PUT', '/api/reviews/:id', [ReviewController::class, 'updateReview'], [[AuthMiddleware::class, 'handle']]);
+$router->add('DELETE', '/api/reviews/:id', [ReviewController::class, 'deleteReview'], [[AuthMiddleware::class, 'handle']]);
 $router->add('POST', '/api/reviews/:id/like', [ReviewController::class, 'toggleReviewLike'], [[AuthMiddleware::class, 'handle']]);
 
 $router->add('GET', '/api/profiles/me', [ProfileController::class, 'getMyProfile'], [[AuthMiddleware::class, 'handle']]);
